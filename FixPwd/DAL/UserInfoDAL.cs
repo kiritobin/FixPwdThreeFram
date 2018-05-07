@@ -14,9 +14,9 @@ namespace FixPwd.DAL
         SQLHelper sqlHelp = new SQLHelper();
         public int UserQuery(UserInfo user)
         {
-            int i = (int)sqlHelp.ExecuteScalar("select count(*) from userinfo where UserName=@UserName and Pwd=@password",
+            int i = Convert.ToInt32(sqlHelp.ExecuteScalar("select count(*) from userinfo where UserName=@UserName and Pwd=@password",
                  new SqlParameter("@UserName", user.userName),
-                  new SqlParameter("@password", user.password));
+                  new SqlParameter("@password", user.password)));
             return i;
         }
         public void PwdFix(UserInfo user)
